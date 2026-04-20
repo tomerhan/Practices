@@ -1,34 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <title>Tirgul 1</title>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register</title>
-    <link rel="stylesheet" href="style.css">
-    <link href= "https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" >
-
+    <title>Register Page</title>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<body class="content">
-<div class="container">
-        <h1>Register</h1>
-<form>
-</form>
 
-<label for="userInput">Email</label>
-<input type="text" id="userInput" required />
-<label for="passInput">Username</label>
-<input type="password" id="passInput" required />
-<label for="passInput">Password</label>
-<input type="password" id="passInput" required />
-<label for="passInput">Confirm Password</label>
-<input type="password" id="passInput" required />
-<label for="passInput">Date of Birth</label>
-<input type="date" id="passInput" required />
-<button type="submit" class="w-full p-3 bg-blue-500 text-white rounded hover:bg-blue-600">Register</button>
-<a href="login.html" class="block text-right mt-4 text-blue-500 hover:underline">Already have an account? Login</a>
-</div>
+<body class="bg-gray-100 flex items-center justify-center h-screen">
+    <div class="bg-white p-8 rounded shadow-md w-96">
+        <h1 class="text-2xl font-semibold mb-6 text-center">Register</h1>
+        <form id="registerForm" action="#" method="post">
+            <label for="userInput">Username</label>
+            <input type="text" id="userInput" name="username" class="w-full p-3 mb-4 border rounded" required />
+
+            <label for="mailInput">Email</label>
+            <input type="email" id="mailInput" name="email" class="w-full p-3 mb-4 border rounded" required />
+
+            <label for="passInput">Password</label>
+            <input type="password" id="passInput" name="password" class="w-full p-3 mb-4 border rounded" required />
+
+            <label for="confirmInput">Confirm Password</label>
+            <input type="password" id="confirmInput" name="confirmPassword" class="w-full p-3 mb-4 border rounded" required />
+
+            <label for="dateInput">Birth Date</label>
+            <input type="date" id="dateInput" name="birthDate" class="w-full p-3 mb-4 border rounded" required />
+
+            <div id="arithmetic-captcha-container" class="space-y-2 mb-4">
+                <label for="arithmetic-answer" class="block text-sm font-medium text-gray-700">
+                    Solve the CAPTCHA:
+                </label>
+                <canvas id="captcha-canvas" width="240" height="72" class="border rounded bg-gray-50 w-full"></canvas>
+                <div class="flex items-center justify-between">
+                    <span id="captcha-challenge" class="text-xs text-gray-500" aria-live="polite"></span>
+                    <button type="button" id="refresh-captcha" title="Refresh CAPTCHA" class="text-sm text-blue-600 hover:underline">
+                        Refresh
+                    </button>
+                    <input type="text" id="arithmetic-answer" name="arithmetic-answer"
+                           class="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                           placeholder="Enter the answer">
+                </div>
+            </div>
+
+            <div class="flex items-center space-x-4"></div>
+
+            <button type="submit" class="w-full p-3 bg-blue-500 text-white rounded hover:bg-blue-600">
+                Register
+            </button>
+
+
+            <p id="arithmetic-error" class="mt-1 text-sm text-red-500 hidden">
+                Incorrect CAPTCHA answer.
+            </p>
+
+            <p id="captcha-attempts-error" class="mt-1 text-sm text-red-600 hidden">
+                Too many failed attempts. Please refresh the CAPTCHA.
+            </p>
+
+            <a href="login.html" class="block text-right mt-4 text-blue-500 hover:underline">
+                already have an account? login
+            </a>
+        </form>
+
+        <div id="registerMessage" class="mt-2 text-red-500 text-center text-sm"></div>
+    </div>
+
+    <script src="users.js"></script>
+    <script src="captcha.js"></script>
+    <script src="register.js"></script>
 </body>
 </html>
-

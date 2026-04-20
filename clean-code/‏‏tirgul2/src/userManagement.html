@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Management</title>
+</head>
+<body>
+    <h1>Welcome 
+        <script>
+            let user = JSON.parse(localStorage.getItem('currentUser'))
+            document.write(user.username)
+        </script>
+    </h1>
+    <table>
+        <thead>
+            <th>User Name</th>
+            <th>Mail</th>
+            <th>Date of Birth</th>
+        </thead>
+        <tbody>
+            <script>
+                let users =  localStorage.getItem('users') ? JSON.parse(localStorage.getItem('users')) : [];
+                for (i = 0; i < users.length; i++) {
+                    document.write("<tr><td>" + users[i].username + "</td><td>" +
+                    users[i].email + "</td><td>" + users[i].dob + "</td></tr>");
+                }
+            </script>
+        </tbody>
+    </table>
+</body>
+</html>
